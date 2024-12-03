@@ -2,47 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-.hashnode-content-style{
-    @apply prose break-words text-slate-950 first:prose-p:mt-0 prose-img:max-w-full prose-p:leading-snug prose-a:underline hover:prose-a:bg-primary-50 dark:hover:prose-a:text-primary-500 dark:hover:prose-a:bg-neutral-800 dark:text-neutral-50 prose-blockquote:leading-snug prose-a:leading-snug prose-figure:leading-snug prose-figcaption:leading-snug prose-pre:leading-snug prose-li:leading-snug prose-ul:leading-snug prose-ol:leading-snug prose-th:leading-snug prose-td:leading-snug lg:prose-xl dark:prose-invert dark:prose-pre:bg-neutral-900 first:prose-h1:mt-0 first:prose-h2:mt-0 first:prose-h3:mt-0 first:prose-h4:mt-0 first:prose-h5:mt-0;
+.hashnode-content-style {
+    @apply prose break-words text-foreground first:prose-p:mt-0 prose-img:max-w-full prose-p:leading-snug prose-a:underline hover:prose-a:bg-card dark:hover:prose-a:text-card-foreground dark:hover:prose-a:bg-border prose-blockquote:leading-snug prose-a:leading-snug prose-figure:leading-snug prose-figcaption:leading-snug prose-pre:leading-snug prose-li:leading-snug prose-ul:leading-snug prose-ol:leading-snug prose-th:leading-snug prose-td:leading-snug lg:prose-xl dark:prose-invert first:prose-h1:mt-0 first:prose-h2:mt-0 first:prose-h3:mt-0 first:prose-h4:mt-0 first:prose-h5:mt-0;
 }
 
 /* Override to remove the backtick */
-.hashnode-content-style :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *))::before, .hashnode-content-style :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *))::after  {
+.hashnode-content-style :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *))::before, 
+.hashnode-content-style :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *))::after {
     content: none;
 }
 
 .prose code {
-    border-radius: 0.25rem;
+    border-radius: var(--radius);
     font-weight: 400 !important;
     padding: 0.25rem;
-    --tw-text-opacity: 1;
-    color: rgba(0, 0, 0, var(--tw-text-opacity));
+    color: var(--card);
     font-size: 80%;
-    background: #f0efed;
+    background: var(--card-foreground);
 }
-  
+
 .dark .prose code {
-    --tw-bg-opacity: 1;
-    background-color: rgba(36, 41, 46, var(--tw-bg-opacity));
-    --tw-text-opacity: 1;
-    color: rgba(238, 238, 238, var(--tw-text-opacity));
+    background-color: var(--border);
+    color: var(--foreground);
 }
-  
+
 .prose pre {
     padding-top: 2rem !important;
     padding-bottom: 2rem !important;
+    background-color: var(--card);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 6px var(--shadow-dark);
 }
-  
+
 .prose pre code {
     background-color: transparent;
-    border-radius: 0px;
     font-weight: 500 !important;
     padding: 0px;
     font-size: 100%;
-    color: #fafafa;
+    color: var(--foreground);
 }
 
 .dark .prose pre code {
-    background-color: transparent;
-    color: #ddd;
+    color: var(--card-foreground);
+}
+
+/* Selection Styling */
+::selection {
+    background-color: var(--background);
+    color: var(--foreground);
 }
